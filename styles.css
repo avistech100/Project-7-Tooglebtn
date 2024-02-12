@@ -1,0 +1,95 @@
+body{
+    background-color: whitesmoke;
+}
+h1{
+    background-color: rgb(247, 184, 184);
+    transition: 600ms ease-in-out;
+}
+.toggle{
+    position: absolute;
+    top: -200px;
+    left: -200px;
+}
+label{
+    display: flex;
+    align-items: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 600;
+}
+.dark{
+    display: none;
+}
+label::before{
+    content: '';
+    width: 3em;
+    height: 1.5em;
+    border-radius: 35px;
+    background-color: rgb(247, 184, 184);
+    transition: 200ms ease-in-out;
+}
+label::after{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    content: '\2716';
+    width: 1.3em;
+    height: 1.3em;
+    border-radius: 35px;
+    background-color: rgb(240, 6, 6);
+    color: white;
+    position: absolute;
+    left: .6em;
+    transition: 300ms ease-in-out;
+}
+
+.toggle:checked +label::after{
+    content: '\2713';
+    left: 2.1em;
+    background-color: rgb(8, 221, 43);
+}
+.toggle:checked +label::before {
+    background-color: rgb(155, 240, 166);
+}
+.toggle:checked +label > .dark{
+    display: inherit;
+    color: white;
+    transition: 200ms ease-in-out;
+}
+.toggle:checked +label > .light{
+    display: none;
+    transition: 200ms ease-in-out;
+}
+.toggle:hover +label::before,
+.toggle:focus + label::before{
+    outline: 1px solid black;
+}
+input[type="checkbox"].toggle:disabled + label{
+    color: #777;
+}
+input[type="checkbox"].toggle:disabled + label::before{
+    background-color: #CCC;
+}
+input[type="checkbox"].toggle:disabled + label::after{
+    background-color: #777;
+}
+/* DARK MODE */
+
+.toggle:checked ~ h1{
+    background-color: rgb(155, 240, 166);
+    color: white;
+}
+p{
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    transition: 500ms ease-in-out;
+}
+.toggle:checked ~ p{
+    background-color: rgb(5, 5, 5);
+    transform: scale(1.2);
+}
+
+
